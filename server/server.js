@@ -1,12 +1,36 @@
 require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
+const workoutRoutes = require("./routes/workouts");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.json({ msg: "sup" });
+app.use(express.json());
+
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
 });
 
-app.listen(process.env.PORT, () => {
-  console.log("Listening on port 4000.");
+app.use("/api/workouts", workoutRoutes);
+
+app.use((err, req, res, next) => {
+  res.status(400).json({ Erroris: err.message });
+});
+
+const mongoDB = process.env.MONGODB_URI;
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => {
+  app.listen(process.env.PORT, () => {
+    console.log(
+      `Connected to MongoDB & listening on port ${process.env.PORT}.`
+    );
+  });
 });
