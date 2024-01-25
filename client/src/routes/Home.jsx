@@ -1,6 +1,6 @@
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useWorkoutsContext } from "../hooks/useWorkoutsCOntext";
 import classes from "./Home.module.css";
 import { useEffect } from "react";
 

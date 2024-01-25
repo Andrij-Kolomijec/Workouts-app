@@ -1,0 +1,34 @@
+.home {
+  display: flex;
+  justify-content: space-between;
+  margin: 10vh 14vw;
+  gap: 2vw;
+}
+
+.workouts {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  max-height: 68vh;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100vw;
+  background: antiquewhite;
+}
+
+/* @supports (scrollbar-color: antiquewhite transparent) {
+  * {
+    scrollbar-color: antiquewhite transparent;
+  }
+} */
