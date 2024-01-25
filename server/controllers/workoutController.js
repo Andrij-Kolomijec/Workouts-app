@@ -25,9 +25,10 @@ const getSingleWorkout = asyncHandler(async (req, res) => {
 });
 
 const createWorkout = asyncHandler(async (req, res) => {
-  const { title, reps, load } = req.body;
+  const { title, sets, reps, load, notes } = req.body;
   const emptyFields = [];
   if (!title) emptyFields.push("title");
+  if (!sets) emptyFields.push("sets");
   if (!reps) emptyFields.push("reps");
   if (!load) emptyFields.push("load");
   if (emptyFields.length > 0) {
@@ -35,7 +36,7 @@ const createWorkout = asyncHandler(async (req, res) => {
       .status(400)
       .json({ error: "Please fill in all the fields.", emptyFields });
   }
-  const workout = await Workout.create({ title, reps, load });
+  const workout = await Workout.create({ title, sets, reps, load, notes });
   res.status(200).json(workout);
 });
 
