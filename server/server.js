@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const workoutRoutes = require("./routes/workouts");
+const userRoutes = require("./routes/user");
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/workouts", workoutRoutes);
+app.use("/api/user", userRoutes);
 
 app.use((err, req, res, next) => {
   res.status(400).json({ Erroris: err.message });
