@@ -23,3 +23,23 @@ nav a {
   font-size: 20px;
   margin-left: 30px;
 }
+
+.container button {
+  margin-left: 20px;
+  justify-self: center;
+  background-color: antiquewhite;
+  border-radius: 5px;
+  height: 25px;
+  width: 100px;
+  font-weight: bold;
+  font-size: 20px;
+  border: 1px solid;
+  font-family: "Courier New", Courier, monospace;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.container button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: antiquewhite;
+}
