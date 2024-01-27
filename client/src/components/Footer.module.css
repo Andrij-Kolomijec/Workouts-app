@@ -1,0 +1,19 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1vw;
+}
+
+.sources {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sources a {
+  color: antiquewhite;
+}
+
+.github {
+  height: 50px;
+  filter: invert(92%) sepia(8%) saturate(870%) hue-rotate(327deg)
+    brightness(105%) contrast(96%);
+}
