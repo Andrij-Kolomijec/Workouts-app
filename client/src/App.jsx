@@ -4,6 +4,7 @@ import Home from "./routes/Home";
 import Navbar from "./components/Navbar";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
