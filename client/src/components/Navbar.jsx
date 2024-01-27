@@ -8,6 +8,12 @@ export default function Navbar() {
         <Link to="/">
           <h1>Workout App</h1>
         </Link>
+        <nav>
+          <div>
+            <Link to="/login">Log In</Link>
+            <Link to="/signup">Sign Up</Link>
+          </div>
+        </nav>
       </div>
     </header>
   );

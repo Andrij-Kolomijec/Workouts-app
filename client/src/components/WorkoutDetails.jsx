@@ -1,5 +1,5 @@
 import classes from "./WorkoutDetails.module.css";
-import { useWorkoutsContext } from "../hooks/useWorkoutsCOntext";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { formatDistanceToNow } from "date-fns";
 import PropTypes from "prop-types";
 import bin from "/delete.svg";
@@ -12,9 +12,12 @@ export default function WorkoutDetails({ workout }) {
   const { dispatch } = useWorkoutsContext();
 
   async function handleClick() {
-    const response = await fetch(import.meta.env.VITE_PORT + workout._id, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      import.meta.env.VITE_PORT_WORKOUTS + workout._id,
+      {
+        method: "DELETE",
+      }
+    );
     const json = await response.json();
     if (response.ok) dispatch({ type: "DELETE_WORKOUT", payload: json });
   }

@@ -1,6 +1,6 @@
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
-import { useWorkoutsContext } from "../hooks/useWorkoutsCOntext";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import classes from "./Home.module.css";
 import { useEffect } from "react";
 
@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch(import.meta.env.VITE_PORT);
+      const response = await fetch(import.meta.env.VITE_PORT_WORKOUTS);
       const json = await response.json();
 
       if (response.ok) {

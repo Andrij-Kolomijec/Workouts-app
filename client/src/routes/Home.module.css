@@ -1,7 +1,7 @@
 .home {
   display: flex;
   justify-content: space-between;
-  margin: 10vh 14vw;
+  margin: 0 14vw;
   gap: 2vw;
 }
 
@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 1vh;
-  max-height: 68vh;
+  max-height: 69vh;
   overflow: auto;
 }
 

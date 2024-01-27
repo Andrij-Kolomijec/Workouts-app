@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useWorkoutsContext } from "../hooks/useWorkoutsCOntext";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import classes from "./WorkoutForm.module.css";
 
 export default function WorkoutForm() {
@@ -16,7 +16,7 @@ export default function WorkoutForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     const workout = { title, sets, reps, load, notes };
-    const response = await fetch(import.meta.env.VITE_PORT, {
+    const response = await fetch(import.meta.env.VITE_PORT_WORKOUTS, {
       method: "POST",
       body: JSON.stringify(workout),
       headers: { "Content-Type": "application/json" },
