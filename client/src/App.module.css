@@ -1,4 +1,4 @@
-.app {
-  /* height: 99vh; */
-  /* margin: 0 30vh; */
+.pages {
+  display: flex;
+  flex-direction: column;
 }
