@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const Workout = require("../models/workoutModel");
 
 const getAllWorkouts = asyncHandler(async (req, res) => {
-  const workout = await Workout.find({}).sort({ createdAt: -1 });
+  const user_id = req.user.id;
+  const workout = await Workout.find({ user_id }).sort({ createdAt: -1 });
   res.status(200).json(workout);
 });
 
@@ -36,19 +37,45 @@ const createWorkout = asyncHandler(async (req, res) => {
       .status(400)
       .json({ error: "Please fill in all the fields.", emptyFields });
   }
-  const workout = await Workout.create({ title, sets, reps, load, notes });
+  const user_id = req.user._id;
+  const workout = await Workout.create({
+    title,
+    sets,
+    reps,
+    load,
+    notes,
+    user_id,
+  });
   res.status(200).json(workout);
 });
 
-// router.post("/", async (req, res) => {
-//   const { title, reps, load } = req.body;
+// const createWorkout = async (req, res) => {
+//   const { title, sets, reps, load, notes } = req.body;
+//   const emptyFields = [];
+//   if (!title) emptyFields.push("title");
+//   if (!sets) emptyFields.push("sets");
+//   if (!reps) emptyFields.push("reps");
+//   if (!load) emptyFields.push("load");
+//   if (emptyFields.length > 0) {
+//     return res
+//       .status(400)
+//       .json({ error: "Please fill in all the fields.", emptyFields });
+//   }
 //   try {
-//     const workout = await Workout.create({ title, reps, load });
+//     const user_id = req.user._id;
+//     const workout = await Workout.create({
+//       title,
+//       sets,
+//       reps,
+//       load,
+//       notes,
+//       user_id,
+//     });
 //     res.status(200).json(workout);
 //   } catch (error) {
 //     res.status(400).json({ error: error.message });
 //   }
-// });
+// };
 
 const deleteWorkout = asyncHandler(async (req, res) => {
   const { id } = req.params;
