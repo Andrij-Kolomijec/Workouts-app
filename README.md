@@ -1,6 +1,6 @@
 # Workout-app
 
-[:arrow_forward: visit here](https://workouts-app-l5k0.onrender.com)
+[:arrow_forward: visit here](https://idyllic-cannoli-a55e05.netlify.app)
 (Loading from a server may take several minutes.)
 
 ![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Images/preview1.png)
