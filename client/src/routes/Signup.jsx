@@ -1,5 +1,4 @@
 import { useState } from "react";
-import classes from "./Signup.module.css";
 import { useSignup } from "../hooks/useSignup";
 
 export default function Signup() {
@@ -14,7 +13,7 @@ export default function Signup() {
   }
 
   return (
-    <form className={classes.signup} onSubmit={handleSubmit}>
+    <form className="login-signup" onSubmit={handleSubmit}>
       <h2>Sign Up</h2>
       <label htmlFor="signupEmail">Email</label>
       <input
@@ -31,7 +30,7 @@ export default function Signup() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button disabled={isLoading}>Sign Up</button>
-      {error && <div className={classes.error}>{error}</div>}
+      {error && <div className="error">{error}</div>}
     </form>
   );
 }

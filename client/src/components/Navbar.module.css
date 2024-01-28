@@ -13,6 +13,13 @@
   color: black;
   font-family: "Archivo Black", sans-serif;
   font-style: italic;
+  transition: text-shadow 0.2s ease-in-out;
+}
+
+.container a:hover,
+.container h1:hover {
+  text-shadow: -1px -1px 0 aqua, 1px -1px 0 aqua, -1px 1px 0 aqua,
+    1px 1px 0 aqua;
 }
 
 h1 {

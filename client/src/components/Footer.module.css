@@ -10,10 +10,37 @@ footer {
 
 .sources a {
   color: antiquewhite;
+  transition: 0.2s ease-in-out;
+}
+
+.sources a:hover {
+  color: aqua;
 }
 
 .github {
   height: 50px;
   filter: invert(92%) sepia(8%) saturate(870%) hue-rotate(327deg)
     brightness(105%) contrast(96%);
+}
+
+.github:hover {
+  animation: tilt-shaking 1s infinite;
+}
+
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

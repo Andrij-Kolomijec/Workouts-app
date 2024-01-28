@@ -1,5 +1,4 @@
 import { useState } from "react";
-import classes from "./Login.module.css";
 import { useLogin } from "../hooks/useLogin";
 
 export default function Login() {
@@ -7,14 +6,18 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useLogin();
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-
     await login(email, password);
-  };
+  }
+
+  async function handleGuestLogin(e) {
+    e.preventDefault();
+    await login("guest@test.org", import.meta.env.VITE_PORT_GUEST);
+  }
 
   return (
-    <form className={classes.login} onSubmit={handleSubmit}>
+    <form className="login-signup" onSubmit={handleSubmit}>
       <h2>Log In</h2>
       <label htmlFor="loginEmail">Email</label>
       <input
@@ -31,7 +34,10 @@ export default function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button disabled={isLoading}>Log In</button>
-      {error && <div className={classes.error}>{error}</div>}
+      <button disabled={isLoading} onClick={handleGuestLogin}>
+        Log In as a Guest
+      </button>
+      {error && <div className="error">{error}</div>}
     </form>
   );
 }
