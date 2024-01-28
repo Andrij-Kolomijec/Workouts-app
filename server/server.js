@@ -29,12 +29,11 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
+const port = process.env.PORT || 4000;
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
-  app.listen(process.env.PORT, () => {
-    console.log(
-      `Connected to MongoDB & listening on port ${process.env.PORT}.`
-    );
+  app.listen(port, () => {
+    console.log(`Connected to MongoDB & listening on port ${port}.`);
   });
 });
