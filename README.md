@@ -3,8 +3,8 @@
 [:arrow_forward: visit here](https://workouts-app-l5k0.onrender.com)
 (Loading from a server may take several minutes.)
 
-![Image Alt text](/images/preview1.jpg)
-![Image Alt text](/images/preview2.jpg)
+![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Images/preview1.png)
+![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Images/preview2.png)
 
 ## MERN project
 
