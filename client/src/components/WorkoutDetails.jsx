@@ -5,17 +5,26 @@ import PropTypes from "prop-types";
 import bin from "/delete.svg";
 import binEmpty from "/delete-empty.svg";
 import { useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function WorkoutDetails({ workout }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const { dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   async function handleClick() {
+    if (!user) {
+      return;
+    }
+
     const response = await fetch(
       import.meta.env.VITE_PORT_WORKOUTS + workout._id,
       {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
       }
     );
     const json = await response.json();

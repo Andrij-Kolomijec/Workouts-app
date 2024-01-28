@@ -1,9 +1,11 @@
+import classes from "./WorkoutForm.module.css";
 import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
-import classes from "./WorkoutForm.module.css";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function WorkoutForm() {
   const { dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
 
   const [title, setTitle] = useState("");
   const [sets, setSets] = useState("");
@@ -15,11 +17,21 @@ export default function WorkoutForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!user) {
+      setError("You must be logged in.");
+      return;
+    }
+
     const workout = { title, sets, reps, load, notes };
+
     const response = await fetch(import.meta.env.VITE_PORT_WORKOUTS, {
       method: "POST",
       body: JSON.stringify(workout),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
 
