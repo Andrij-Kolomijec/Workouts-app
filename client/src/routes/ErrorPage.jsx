@@ -8,7 +8,7 @@ function ErrorPage() {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      navigate(-1);
+      navigate("/");
     }, 3000);
     return () => clearTimeout(timeoutId);
   }, [navigate]);
@@ -24,7 +24,7 @@ function ErrorPage() {
     <div className={classes.error}>
       <h1>Something went wrong</h1>
       <h3>
-        You will be redirected to the previous page in {time}{" "}
+        You will be redirected to the main page in {time}{" "}
         {time === 1 ? "second" : "seconds"}.
       </h3>
     </div>

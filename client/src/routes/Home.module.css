@@ -5,6 +5,10 @@
   gap: 2vw;
 }
 
+.home > span {
+  align-self: center;
+  left: 30%;
+}
 .workouts {
   flex: 1;
   display: flex;
