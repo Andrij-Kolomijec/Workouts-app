@@ -13,6 +13,10 @@ body {
   color: antiquewhite;
 }
 
+#root {
+  height: 90vh;
+}
+
 .login-signup,
 .loading-login-signup {
   width: 300px;

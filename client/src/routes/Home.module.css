@@ -31,8 +31,8 @@
   background: antiquewhite;
 }
 
-/* @supports (scrollbar-color: antiquewhite transparent) {
+@supports (scrollbar-color: antiquewhite transparent) {
   * {
     scrollbar-color: antiquewhite transparent;
   }
-} */
+}
