@@ -13,7 +13,8 @@ body {
   color: antiquewhite;
 }
 
-.login-signup {
+.login-signup,
+.loading-login-signup {
   width: 300px;
   backdrop-filter: blur(20px);
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
@@ -23,6 +24,22 @@ body {
   flex-direction: column;
   gap: 10px;
   align-self: center;
+}
+
+.loading-login-signup {
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  height: 250px;
+}
+
+.loader-text {
+  text-align: center;
+  color: transparent;
+  background-image: linear-gradient(to left, antiquewhite, black);
+  animation: textColor 7s linear infinite;
+  background-size: 500%;
+  background-clip: text;
 }
 
 .login-signup h2 {
@@ -61,4 +78,16 @@ body {
   color: red;
   text-align: center;
   grid-area: auto / span 2;
+}
+
+@keyframes textColor {
+  0% {
+    background-position: 0 100%;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
+import Spinner from "../components/Spinner";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -13,23 +14,40 @@ export default function Signup() {
   }
 
   return (
-    <form className="login-signup" onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
-      <label htmlFor="signupEmail">Email</label>
-      <input
-        id="signupEmail"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label htmlFor="signupPassword">Password</label>
-      <input
-        id="signupPassword"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button disabled={isLoading}>Sign Up</button>
+    <form
+      className={!isLoading ? "login-signup" : "loading-login-signup"}
+      onSubmit={handleSubmit}
+    >
+      {!isLoading ? (
+        <>
+          <h2>Sign Up</h2>
+          <label htmlFor="signupEmail">Email</label>
+          <input
+            id="signupEmail"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="signupPassword">Password</label>
+          <input
+            id="loginPasignupPasswordssword"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button disabled={isLoading}>Sign Up</button>
+        </>
+      ) : (
+        <>
+          <h2 className="loader-text">Signing Up</h2>
+          <Spinner />
+          <p className="loader-text">
+            Loading from a server may
+            <br />
+            take several minutes.
+          </p>
+        </>
+      )}
       {error && <div className="error">{error}</div>}
     </form>
   );
