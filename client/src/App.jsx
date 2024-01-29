@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import Footer from "./components/Footer";
+import ErrorPage from "./routes/ErrorPage";
 
 function App() {
   const { user } = useAuthContext();
@@ -27,6 +28,7 @@ function App() {
               path="/signup"
               element={!user ? <Signup /> : <Navigate to="/" />}
             />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
       </BrowserRouter>
