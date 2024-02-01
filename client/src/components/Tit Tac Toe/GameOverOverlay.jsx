@@ -16,6 +16,6 @@ export default function GameOverOverlay({ winner, resetGame, isDraw }) {
 
 GameOverOverlay.propTypes = {
   winner: PropTypes.string,
-  resetGame: PropTypes.bool,
+  resetGame: PropTypes.func,
   isDraw: PropTypes.bool,
 };

@@ -3,9 +3,11 @@ import classes from "./Board.module.css";
 import Inputs from "./Inputs";
 import WINNING_COMBINATIONS from "./winningCombinations";
 import GameOverOverlay from "./GameOverOverlay";
+import bot from "./Bots";
 
 const initialBoard = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "x";
+let winner = null;
 
 function checkForWin(board) {
   for (let combo of WINNING_COMBINATIONS) {
@@ -19,6 +21,7 @@ function checkForWin(board) {
 export default function Board() {
   const [playerX, setPlayerX] = useState("X");
   const [playerO, setPlayerO] = useState("O");
+  // bot vs bot, bot vs human, harder bots...
   const [difficultyX, setDifficultyX] = useState("human");
   const [difficultyO, setDifficultyO] = useState("human");
   const [board, setBoard] = useState(initialBoard);
@@ -29,9 +32,26 @@ export default function Board() {
       newBoard[index] = currentPlayer + index;
       setBoard(newBoard);
       if (checkForWin(newBoard)) {
-        // alert(`${currentPlayer === "x" ? playerX : playerO} won!`);
+        winner = currentPlayer === "x" ? playerX : playerO;
+        currentPlayer = "x";
+        return;
       }
       currentPlayer = currentPlayer === "x" ? "o" : "x";
+      if (difficultyO !== "human") {
+        winner = bot(
+          difficultyO,
+          newBoard,
+          setBoard,
+          currentPlayer,
+          checkForWin
+        );
+        if (winner) {
+          winner = currentPlayer === "x" ? playerX : playerO;
+          currentPlayer = "x";
+          return;
+        }
+        currentPlayer = currentPlayer === "x" ? "o" : "x";
+      }
     }
   }
 
@@ -60,7 +80,7 @@ export default function Board() {
       </div>
       {(!board.includes("") || checkForWin(board)) && (
         <GameOverOverlay
-          winner={currentPlayer === "o" ? playerX : playerO}
+          winner={winner}
           isDraw={!checkForWin(board)}
           resetGame={setBoard}
         />
