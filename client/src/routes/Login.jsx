@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import Spinner from "../components/Spinner";
-import TicTacToe from "../components/Tit Tac Toe/TicTacToe";
+import TicTacToe from "../components/TicTacToe/TicTacToe";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -59,7 +59,7 @@ export default function Login() {
         )}
         {error && <div className="error">{error}</div>}
       </form>
-      <TicTacToe />
+      <TicTacToe isLoading={isLoading} />
     </>
   );
 }
