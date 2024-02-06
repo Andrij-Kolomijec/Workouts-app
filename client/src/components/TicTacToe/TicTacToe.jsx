@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Board from "./Board";
 import close from "/close-circle.svg";
 
-export default function TicTacToe({ delay = 2000, isLoading, setShow }) {
+export default function TicTacToe({ delay = 2000, isLoading, setShow = null }) {
   const [showComponent, setShowComponent] = useState(false);
   const [isOut, setIsOut] = useState(true);
 
@@ -46,7 +46,7 @@ export default function TicTacToe({ delay = 2000, isLoading, setShow }) {
             title="Close"
             onClick={handleClose}
           />
-          <h3>Meanwhile, play tic tac toe!</h3>
+          {!setShow && <h3>Meanwhile, play tic tac toe!</h3>}
           <Board />
         </div>
       )}

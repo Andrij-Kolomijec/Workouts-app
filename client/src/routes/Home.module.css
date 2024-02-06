@@ -1,7 +1,7 @@
 .home {
   display: flex;
   justify-content: space-between;
-  margin: 0 14vw;
+  margin: 0 2vw;
   gap: 2vw;
   min-width: 70vw;
 }
