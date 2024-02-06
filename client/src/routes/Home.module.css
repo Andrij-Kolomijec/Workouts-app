@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin: 0 14vw;
   gap: 2vw;
+  min-width: 70vw;
 }
 
 .home > span {
@@ -15,7 +16,18 @@
   flex-direction: column;
   gap: 1vh;
   max-height: 69vh;
+  min-width: 40vw;
   overflow: auto;
+}
+
+.play {
+  height: 30px;
+  filter: invert(92%) sepia(8%) saturate(870%) hue-rotate(327deg)
+    brightness(105%) contrast(96%);
+}
+
+.play:hover {
+  cursor: pointer;
 }
 
 /* ::-webkit-scrollbar {
@@ -35,5 +47,12 @@
   * {
     scrollbar-color: antiquewhite transparent;
     scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 1100px) {
+  .home {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
   }
 }

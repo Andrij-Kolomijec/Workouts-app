@@ -13,7 +13,7 @@ export default function Navbar() {
         <Link to="/">
           <h1>Workout App</h1>
         </Link>
-        <nav>
+        <nav className={classes.navLinks}>
           {user ? (
             <div>
               <span>{user.email}</span>

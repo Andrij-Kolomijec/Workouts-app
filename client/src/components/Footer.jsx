@@ -16,7 +16,12 @@ export default function Footer() {
         </p>
       </div>
       <a href="https://github.com/Andrij-Kolomijec">
-        <img className={classes.github} src="/github.svg" />
+        <img
+          className={classes.github}
+          src="/github.svg"
+          alt="GitHub Icon"
+          title="More of my work"
+        />
       </a>
     </footer>
   );

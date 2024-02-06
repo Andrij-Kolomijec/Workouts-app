@@ -4,6 +4,19 @@
   margin: 50px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3vh;
+}
+
+.navLinks {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navLinks > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5vw;
 }
 
 .container * {
@@ -16,19 +29,39 @@
   transition: text-shadow 0.2s ease-in-out;
 }
 
-.container a:hover,
-.container h1:hover {
+.container a:hover {
   text-shadow: -1px -1px 0 aqua, 1px -1px 0 aqua, -1px 1px 0 aqua,
     1px 1px 0 aqua;
 }
 
+.container > a {
+  position: relative;
+}
+
+h1::before {
+  content: "Workout App";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black;
+  width: 0%;
+  overflow: hidden;
+  transition: width 1s;
+  text-shadow: -1px -1px 0 aqua, 1px -1px 0 aqua, -1px 1px 0 aqua,
+    1px 1px 0 aqua;
+}
+
+h1:hover::before {
+  width: 110%;
+}
+
 h1 {
+  text-wrap: nowrap;
   font-size: 50px;
 }
 
 nav a {
   font-size: 20px;
-  margin-left: 30px;
 }
 
 .container button {
@@ -49,4 +82,10 @@ nav a {
   cursor: pointer;
   background-color: black;
   color: antiquewhite;
+}
+
+@media (max-width: 450px) {
+  h1 {
+    text-wrap: wrap;
+  }
 }

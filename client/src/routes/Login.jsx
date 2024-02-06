@@ -20,6 +20,7 @@ export default function Login() {
 
   return (
     <>
+      <div className="filler left"></div>
       <form
         className={!isLoading ? "login-signup" : "loading-login-signup"}
         onSubmit={handleSubmit}
@@ -59,7 +60,9 @@ export default function Login() {
         )}
         {error && <div className="error">{error}</div>}
       </form>
-      <TicTacToe isLoading={isLoading} />
+      <div className="filler">
+        <TicTacToe isLoading={isLoading} />
+      </div>
     </>
   );
 }

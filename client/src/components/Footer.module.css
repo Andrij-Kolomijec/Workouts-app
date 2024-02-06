@@ -31,14 +31,26 @@ footer {
   0% {
     transform: rotate(0deg);
   }
+  13% {
+    transform: rotate(10deg);
+  }
   25% {
     transform: rotate(20deg);
   }
+  37% {
+    transform: rotate(10deg);
+  }
   50% {
-    transform: rotate(0eg);
+    transform: rotate(0deg);
+  }
+  63% {
+    transform: rotate(-10deg);
   }
   75% {
     transform: rotate(-20deg);
+  }
+  87% {
+    transform: rotate(-10deg);
   }
   100% {
     transform: rotate(0deg);

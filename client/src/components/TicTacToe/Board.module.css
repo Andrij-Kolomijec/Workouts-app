@@ -1,5 +1,4 @@
 .container {
-  /* --square-borders: 5px solid; */
   --square-dimensions: 100px;
   --symbol-dimensions: calc(var(--square-dimensions) * 0.9);
 }
@@ -17,6 +16,7 @@
       var(--square-dimensions)
     );
   gap: 1rem;
+  justify-content: center;
 }
 
 .square {
@@ -88,4 +88,10 @@
   width: calc(var(--symbol-dimensions) * 0.55);
   height: calc(var(--symbol-dimensions) * 0.55);
   background-color: antiquewhite;
+}
+
+@media (max-width: 390px) {
+  .container {
+    --square-dimensions: 25vw;
+  }
 }

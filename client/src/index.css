@@ -11,6 +11,7 @@ body {
   background-attachment: fixed;
   background-position: center;
   color: antiquewhite;
+  overflow-x: hidden;
 }
 
 .login-signup,
@@ -23,7 +24,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-self: center;
+  align-self: flex-start;
+}
+
+.filler {
+  width: 392px;
 }
 
 .loading-login-signup {
@@ -89,5 +94,17 @@ body {
   }
   100% {
     background-position: 0 100%;
+  }
+}
+
+@media (max-width: 1250px) {
+  .filler {
+    width: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .filler.left {
+    display: none;
   }
 }
