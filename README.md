@@ -1,10 +1,9 @@
 # Workout-app
 
 [:arrow_forward: visit here](https://idyllic-cannoli-a55e05.netlify.app)
-(Loading from a server may take several minutes.)
 
-![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Images/preview1.png)
-![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Images/preview2.png)
+![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Client/public/preview1.png)
+![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Client/public/preview2.png)
 
 ## MERN project
 
