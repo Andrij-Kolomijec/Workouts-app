@@ -32,54 +32,59 @@ export default function Board() {
         difficultyO === "human" &&
         currentPlayer === "x")
     ) {
-      triggerBotMove();
+      setTimeout(() => {
+        triggerBotMove();
+      }, 300);
     }
   }, [board, difficultyX, difficultyO]);
 
   function triggerBotMove() {
+    // bot vs ... - to start the game if bot should go first
     const newBoard = [...board];
     const difficulty = currentPlayer === "x" ? difficultyX : difficultyO;
+    // condition is needed, otherwise infinite overlay loop after game over
     if (!checkForWin(board) && board.includes("")) {
-      bot(difficulty, newBoard, setBoard, currentPlayer, checkForWin);
       winner = currentPlayer === "x" ? playerX : playerO;
+      bot(difficulty, newBoard, setBoard, currentPlayer, checkForWin);
     } else {
       winner = currentPlayer === "x" ? playerX : playerO;
       currentPlayer = "x";
       return;
     }
-
     currentPlayer = currentPlayer === "x" ? "o" : "x";
   }
 
   function handleClick(index) {
     const newBoard = [...board];
-    // human vs bot || bot vs human (to continue with bot)
-    if (difficultyX === "human" || difficultyO === "human") {
-      if (board[index] === "") {
-        newBoard[index] = currentPlayer + index;
-        setBoard(newBoard);
-        if (checkForWin(newBoard)) {
+    // human vs bot || human vs human
+    if (
+      (difficultyX === "human" || difficultyO === "human") &&
+      board[index] === ""
+    ) {
+      newBoard[index] = currentPlayer + index;
+      setBoard(newBoard);
+      if (checkForWin(newBoard)) {
+        winner = currentPlayer === "x" ? playerX : playerO;
+        currentPlayer = "x";
+        return;
+      }
+      currentPlayer = currentPlayer === "x" ? "o" : "x";
+
+      if (difficultyO !== "human" || difficultyX !== "human") {
+        const didBotWin = bot(
+          difficultyO,
+          newBoard,
+          setBoard,
+          currentPlayer,
+          checkForWin
+        );
+
+        if (didBotWin) {
           winner = currentPlayer === "x" ? playerX : playerO;
           currentPlayer = "x";
           return;
         }
         currentPlayer = currentPlayer === "x" ? "o" : "x";
-        // human vs bot || bot vs human (for bot to continue)
-        if (difficultyO !== "human" || difficultyX !== "human") {
-          const gameEnded = bot(
-            difficultyO,
-            newBoard,
-            setBoard,
-            currentPlayer,
-            checkForWin
-          );
-          if (gameEnded) {
-            winner = currentPlayer === "x" ? playerX : playerO;
-            currentPlayer = "x";
-            return;
-          }
-          currentPlayer = currentPlayer === "x" ? "o" : "x";
-        }
       }
     }
   }
@@ -118,7 +123,7 @@ export default function Board() {
       {(!board.includes("") || checkForWin(board)) && (
         <GameOverOverlay
           winner={winner}
-          isDraw={!board.includes("")}
+          isDraw={!board.includes("") && !checkForWin(board)}
           resetGame={handleReset}
         />
       )}
