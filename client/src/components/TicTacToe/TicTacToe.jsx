@@ -4,26 +4,35 @@ import PropTypes from "prop-types";
 import Board from "./Board";
 import close from "/close-circle.svg";
 
-export default function TicTacToe({ isLoading }) {
+export default function TicTacToe({ delay = 2000, isLoading, setShow }) {
   const [showComponent, setShowComponent] = useState(false);
-  const [isOut, setIsOut] = useState(false);
+  const [isOut, setIsOut] = useState(true);
 
   useEffect(() => {
     let timeoutId;
     if (isLoading) {
       timeoutId = setTimeout(() => {
-        !showComponent ? setShowComponent(true) : setIsOut(true);
-      }, 1000);
+        setShowComponent(true);
+        setIsOut(false);
+      }, delay);
+    } else {
+      timeoutId = setTimeout(() => {
+        setShowComponent(false);
+        setIsOut(true);
+      }, 1500);
     }
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [isLoading, isOut]);
+  }, [isLoading, delay]);
 
   function handleClose() {
     setIsOut(true);
-    // setShowComponent(false);
+    setTimeout(() => {
+      setShowComponent(false);
+      setShow(false);
+    }, 500);
   }
 
   return (
@@ -46,5 +55,7 @@ export default function TicTacToe({ isLoading }) {
 }
 
 TicTacToe.propTypes = {
+  delay: PropTypes.number,
   isLoading: PropTypes.bool,
+  setShow: PropTypes.func,
 };

@@ -25,8 +25,6 @@ export default function Board() {
   const [difficultyO, setDifficultyO] = useState("unbeatable");
   const [board, setBoard] = useState(initialBoard);
 
-  console.log("board render");
-
   useEffect(() => {
     if (
       (difficultyX !== "human" && difficultyO !== "human") ||
@@ -36,24 +34,20 @@ export default function Board() {
     ) {
       triggerBotMove();
     }
-  }, [board, difficultyX, difficultyX]);
+  }, [board, difficultyX, difficultyO]);
 
   function triggerBotMove() {
     const newBoard = [...board];
     const difficulty = currentPlayer === "x" ? difficultyX : difficultyO;
-    const gameEnded = bot(
-      difficulty,
-      newBoard,
-      setBoard,
-      currentPlayer,
-      checkForWin
-    );
-
-    if (gameEnded) {
+    if (!checkForWin(board) && board.includes("")) {
+      bot(difficulty, newBoard, setBoard, currentPlayer, checkForWin);
+      winner = currentPlayer === "x" ? playerX : playerO;
+    } else {
       winner = currentPlayer === "x" ? playerX : playerO;
       currentPlayer = "x";
       return;
     }
+
     currentPlayer = currentPlayer === "x" ? "o" : "x";
   }
 

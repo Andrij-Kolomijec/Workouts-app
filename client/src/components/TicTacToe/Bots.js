@@ -8,7 +8,7 @@ export default function bot(difficulty, board, setBoard, player, checkForWin) {
       true,
       player,
       checkForWin,
-      difficulty === "easy" ? 1 : difficulty === "medium" ? 5 : 9
+      difficulty === "easy" ? 3 : difficulty === "medium" ? 5 : 9
     ).index;
     const newBoard = [...board];
     newBoard[randomNumber] = player + randomNumber;
