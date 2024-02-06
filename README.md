@@ -2,8 +2,8 @@
 
 [:arrow_forward: visit here](https://idyllic-cannoli-a55e05.netlify.app)
 
-![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Client/public/preview1.png)
-![Image Alt text](https://raw.githubusercontent.com/Andrij-Kolomijec/Workouts-app/main/Client/public/preview2.png)
+![Preview Screenshot](https://github.com/Andrij-Kolomijec/Workouts-app/blob/main/client/public/preview1.png)
+![Preview Screenshot](https://github.com/Andrij-Kolomijec/Workouts-app/blob/main/client/public/preview2.png)
 
 ## MERN project
 
