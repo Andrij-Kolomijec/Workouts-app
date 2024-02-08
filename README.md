@@ -28,7 +28,7 @@
 - managing authentication between client and server
 - after successful log in / sign up request
   1. server creates token (JWT)
-  2. sends back the JWT to the client (browser) so it can be accessed there => pressence or absense of JWT allows to conditionally show pages
+  2. sends back the JWT to the client (browser) so it can be accessed there => presence or absence of JWT allows to conditionally show pages
   3. restricting access to server APIs - passing the JWT from client to server API as parts of request headers
 - the security is achieved using secret string of characters known only to the server and hashing that string with header and payload -> the result is unique signature
 - **backend**
@@ -44,7 +44,7 @@
     - have error and isLoading states, dispatch function from context
     - connect to the login/signup APIs using post method and passing stringified json of email and password in the fetch request body
     - then to get the response = 'response.json() -> if response.ok:
-      1. store JWT (and email property => so the whole json object) in the browser's local storage to maintain loged in status
+      1. store JWT (and email property => so the whole json object) in the browser's local storage to maintain logged in status
       2. update context with dispatch function
       3. set loading state
     - hooks return login/signup function, loading state, error state
